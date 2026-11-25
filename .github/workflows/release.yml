@@ -10,7 +10,24 @@ permissions:
   contents: write
 
 jobs:
-  release:
+  create-release:
+    runs-on: ubuntu-22.04
+    outputs:
+      release_id: ${{ steps.release.outputs.id }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create GitHub Release
+        id: release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: AgentInspect ${{ github.ref_name }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+
+  build:
+    needs: create-release
     permissions:
       contents: write
     strategy:
@@ -65,12 +82,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_name }}
-          releaseName: AgentInspect ${{ github.ref_name }}
-          releaseBody: |
-            Installers for **Windows**, **macOS** (Apple Silicon + Intel), and **Linux** (`.deb`, AppImage, etc.).
-
-            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
-          releaseDraft: false
-          prerelease: false
+          releaseId: ${{ needs.create-release.outputs.release_id }}
           args: ${{ matrix.args }}
