@@ -1,0 +1,16 @@
+---
+description: AgentInspect project defaults — pnpm, architecture, touch points
+alwaysApply: true
+---
+
+# AgentInspect
+
+Tauri 2 + React + MUI desktop app: scan repos for AI config bloat and duplicates.
+
+- **Package manager:** pnpm only. Scripts: `pnpm install`, `pnpm dev`, `pnpm build`, `pnpm tauri dev`.
+- **Scanner:** `src-tauri/src/scanner.rs` — extend `classify()` for new platforms.
+- **IPC:** `scan_repo` in `src-tauri/src/lib.rs`.
+- **UI:** `src/App.tsx` + `src/components/*`; types in `src/types/scan.ts` (match Rust camelCase).
+- **Details:** see `AGENTS.md` before large changes.
+
+Keep diffs minimal. Do not add npm/yarn lockfiles.

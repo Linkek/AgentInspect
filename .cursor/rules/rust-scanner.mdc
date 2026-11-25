@@ -1,0 +1,15 @@
+---
+description: Rust / Tauri scanner conventions
+globs: src-tauri/**/*
+alwaysApply: false
+---
+
+# Rust scanner
+
+- Put scan logic in `scanner.rs`; expose via `#[tauri::command]` in `lib.rs`.
+- All frontend-facing structs: `Serialize` + `rename_all = "camelCase"`.
+- Walk with `ignore::WalkBuilder` (gitignore-aware). Do not remove `skip_dir` entries without reason.
+- File size cap: 2MB text skip with warning — preserve that guard.
+- New platforms need `classify()` entry + optional `PLATFORM_LABELS` in TS.
+
+After Rust edits: `cargo check` in `src-tauri` or `pnpm tauri dev`.

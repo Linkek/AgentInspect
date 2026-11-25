@@ -1,0 +1,344 @@
+{
+  "version": 2,
+  "contextWindowSafetyFactor": 0.95,
+  "charsPerToken": 4,
+  "defaultProfile": {
+    "providerId": "cursor",
+    "modelId": "composer-default"
+  },
+  "providers": {
+    "cursor": {
+      "label": "Cursor Agent",
+      "models": {
+        "composer-default": {
+          "label": "Composer (default profile)",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.12,
+          "maxSingleFileTokens": 2500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "long-context": {
+          "label": "Long-context host model",
+          "contextWindowTokens": 400000,
+          "alwaysOnBudgetFraction": 0.03,
+          "totalInstructionsBudgetFraction": 0.15,
+          "maxSingleFileTokens": 4000,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 240,
+          "maxDuplicateGroupsBeforeWarn": 5
+        },
+        "cursor-128k": {
+          "label": "Cursor (128k-class host)",
+          "contextWindowTokens": 128000,
+          "alwaysOnBudgetFraction": 0.05,
+          "totalInstructionsBudgetFraction": 0.1,
+          "maxSingleFileTokens": 2000,
+          "maxAlwaysOnRuleLines": 450,
+          "lineLengthWarnChars": 180,
+          "maxDuplicateGroupsBeforeWarn": 2
+        }
+      }
+    },
+    "anthropic": {
+      "label": "Claude Code / API",
+      "models": {
+        "claude-sonnet-4-5": {
+          "label": "Claude Sonnet 4.5",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.12,
+          "maxSingleFileTokens": 2500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "claude-opus-4-5": {
+          "label": "Claude Opus 4.5",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.12,
+          "maxSingleFileTokens": 3000,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "claude-1m": {
+          "label": "Claude 1M window family",
+          "contextWindowTokens": 1000000,
+          "alwaysOnBudgetFraction": 0.02,
+          "totalInstructionsBudgetFraction": 0.08,
+          "maxSingleFileTokens": 5000,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 240,
+          "maxDuplicateGroupsBeforeWarn": 5
+        },
+        "claude-opus-4-1": {
+          "label": "Claude Opus 4.1",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.12,
+          "maxSingleFileTokens": 3000,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "claude-sonnet-4": {
+          "label": "Claude Sonnet 4",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.12,
+          "maxSingleFileTokens": 2500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "claude-haiku-4-5": {
+          "label": "Claude Haiku 4.5",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.11,
+          "maxSingleFileTokens": 2200,
+          "maxAlwaysOnRuleLines": 450,
+          "lineLengthWarnChars": 190,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "claude-3-7-sonnet": {
+          "label": "Claude 3.7 Sonnet",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.12,
+          "maxSingleFileTokens": 2500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "claude-3-5-haiku": {
+          "label": "Claude 3.5 Haiku",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.11,
+          "maxSingleFileTokens": 2200,
+          "maxAlwaysOnRuleLines": 450,
+          "lineLengthWarnChars": 190,
+          "maxDuplicateGroupsBeforeWarn": 3
+        }
+      }
+    },
+    "openai": {
+      "label": "OpenAI / Codex",
+      "models": {
+        "gpt-5": {
+          "label": "GPT-5",
+          "contextWindowTokens": 400000,
+          "alwaysOnBudgetFraction": 0.03,
+          "totalInstructionsBudgetFraction": 0.14,
+          "maxSingleFileTokens": 3500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 220,
+          "maxDuplicateGroupsBeforeWarn": 4
+        },
+        "gpt-5-codex": {
+          "label": "GPT-5-Codex",
+          "contextWindowTokens": 400000,
+          "alwaysOnBudgetFraction": 0.03,
+          "totalInstructionsBudgetFraction": 0.14,
+          "maxSingleFileTokens": 3500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 220,
+          "maxDuplicateGroupsBeforeWarn": 4
+        },
+        "gpt-5-chat": {
+          "label": "GPT-5 chat (128k)",
+          "contextWindowTokens": 128000,
+          "alwaysOnBudgetFraction": 0.05,
+          "totalInstructionsBudgetFraction": 0.1,
+          "maxSingleFileTokens": 2000,
+          "maxAlwaysOnRuleLines": 400,
+          "lineLengthWarnChars": 180,
+          "maxDuplicateGroupsBeforeWarn": 2
+        },
+        "gpt-5-mini": {
+          "label": "GPT-5 mini",
+          "contextWindowTokens": 400000,
+          "alwaysOnBudgetFraction": 0.03,
+          "totalInstructionsBudgetFraction": 0.13,
+          "maxSingleFileTokens": 3000,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 210,
+          "maxDuplicateGroupsBeforeWarn": 4
+        },
+        "gpt-5.1": {
+          "label": "GPT-5.1",
+          "contextWindowTokens": 400000,
+          "alwaysOnBudgetFraction": 0.03,
+          "totalInstructionsBudgetFraction": 0.14,
+          "maxSingleFileTokens": 3500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 220,
+          "maxDuplicateGroupsBeforeWarn": 4
+        },
+        "gpt-5.1-codex": {
+          "label": "GPT-5.1 Codex",
+          "contextWindowTokens": 400000,
+          "alwaysOnBudgetFraction": 0.03,
+          "totalInstructionsBudgetFraction": 0.14,
+          "maxSingleFileTokens": 3500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 220,
+          "maxDuplicateGroupsBeforeWarn": 4
+        },
+        "gpt-4o": {
+          "label": "GPT-4o",
+          "contextWindowTokens": 128000,
+          "alwaysOnBudgetFraction": 0.05,
+          "totalInstructionsBudgetFraction": 0.1,
+          "maxSingleFileTokens": 2200,
+          "maxAlwaysOnRuleLines": 450,
+          "lineLengthWarnChars": 190,
+          "maxDuplicateGroupsBeforeWarn": 2
+        },
+        "gpt-4o-mini": {
+          "label": "GPT-4o mini",
+          "contextWindowTokens": 128000,
+          "alwaysOnBudgetFraction": 0.05,
+          "totalInstructionsBudgetFraction": 0.1,
+          "maxSingleFileTokens": 1800,
+          "maxAlwaysOnRuleLines": 400,
+          "lineLengthWarnChars": 180,
+          "maxDuplicateGroupsBeforeWarn": 2
+        },
+        "gpt-4.1": {
+          "label": "GPT-4.1",
+          "contextWindowTokens": 128000,
+          "alwaysOnBudgetFraction": 0.05,
+          "totalInstructionsBudgetFraction": 0.11,
+          "maxSingleFileTokens": 2400,
+          "maxAlwaysOnRuleLines": 480,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "o3": {
+          "label": "OpenAI o3",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.12,
+          "maxSingleFileTokens": 2800,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 210,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "o4-mini": {
+          "label": "OpenAI o4-mini",
+          "contextWindowTokens": 200000,
+          "alwaysOnBudgetFraction": 0.04,
+          "totalInstructionsBudgetFraction": 0.11,
+          "maxSingleFileTokens": 2400,
+          "maxAlwaysOnRuleLines": 480,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        },
+        "codex-mini-latest": {
+          "label": "Codex mini (when hosted)",
+          "contextWindowTokens": 128000,
+          "alwaysOnBudgetFraction": 0.05,
+          "totalInstructionsBudgetFraction": 0.1,
+          "maxSingleFileTokens": 2000,
+          "maxAlwaysOnRuleLines": 400,
+          "lineLengthWarnChars": 180,
+          "maxDuplicateGroupsBeforeWarn": 2
+        }
+      }
+    },
+    "google": {
+      "label": "Gemini",
+      "models": {
+        "gemini-2-5-pro": {
+          "label": "Gemini 2.5 Pro",
+          "contextWindowTokens": 1048576,
+          "alwaysOnBudgetFraction": 0.015,
+          "totalInstructionsBudgetFraction": 0.06,
+          "maxSingleFileTokens": 6000,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 260,
+          "maxDuplicateGroupsBeforeWarn": 6
+        },
+        "gemini-2-5-flash": {
+          "label": "Gemini 2.5 Flash",
+          "contextWindowTokens": 1048576,
+          "alwaysOnBudgetFraction": 0.015,
+          "totalInstructionsBudgetFraction": 0.06,
+          "maxSingleFileTokens": 5000,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 260,
+          "maxDuplicateGroupsBeforeWarn": 6
+        },
+        "gemini-2-5-flash-lite": {
+          "label": "Gemini 2.5 Flash-Lite",
+          "contextWindowTokens": 1048576,
+          "alwaysOnBudgetFraction": 0.015,
+          "totalInstructionsBudgetFraction": 0.06,
+          "maxSingleFileTokens": 4500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 250,
+          "maxDuplicateGroupsBeforeWarn": 6
+        },
+        "gemini-2-0-flash": {
+          "label": "Gemini 2.0 Flash",
+          "contextWindowTokens": 1048576,
+          "alwaysOnBudgetFraction": 0.015,
+          "totalInstructionsBudgetFraction": 0.06,
+          "maxSingleFileTokens": 5000,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 260,
+          "maxDuplicateGroupsBeforeWarn": 6
+        },
+        "gemini-pro-latest": {
+          "label": "Gemini Pro (latest)",
+          "contextWindowTokens": 1048576,
+          "alwaysOnBudgetFraction": 0.015,
+          "totalInstructionsBudgetFraction": 0.06,
+          "maxSingleFileTokens": 5500,
+          "maxAlwaysOnRuleLines": 500,
+          "lineLengthWarnChars": 260,
+          "maxDuplicateGroupsBeforeWarn": 6
+        }
+      }
+    },
+    "github-copilot": {
+      "label": "GitHub Copilot",
+      "models": {
+        "copilot-default": {
+          "label": "Copilot (default workspace)",
+          "contextWindowTokens": 128000,
+          "alwaysOnBudgetFraction": 0.05,
+          "totalInstructionsBudgetFraction": 0.1,
+          "maxSingleFileTokens": 2200,
+          "maxAlwaysOnRuleLines": 450,
+          "lineLengthWarnChars": 190,
+          "maxDuplicateGroupsBeforeWarn": 2
+        },
+        "copilot-gpt-4.1": {
+          "label": "Copilot with GPT-4.1-class",
+          "contextWindowTokens": 128000,
+          "alwaysOnBudgetFraction": 0.05,
+          "totalInstructionsBudgetFraction": 0.11,
+          "maxSingleFileTokens": 2400,
+          "maxAlwaysOnRuleLines": 480,
+          "lineLengthWarnChars": 200,
+          "maxDuplicateGroupsBeforeWarn": 3
+        }
+      }
+    }
+  },
+  "scoringWeights": {
+    "totalFootprint": 0.3,
+    "alwaysOnProxy": 0.2,
+    "oversizedFiles": 0.2,
+    "duplicates": 0.2,
+    "platformSprawl": 0.05,
+    "mcpBloat": 0.05
+  }
+}

@@ -1,0 +1,16 @@
+---
+description: React + MUI frontend conventions
+globs: src/**/*
+alwaysApply: false
+---
+
+# React UI
+
+- MUI 9 + emotion; theme in `src/theme.ts`.
+- Invoke backend: `invoke<ScanReport>('scan_repo', { repoPath, profile })`; listen `scan-progress`.
+- Pages: `src/pages/*` (Score, Issues, Charts, Browse, Settings). Dark theme only.
+- Folder pick: `@tauri-apps/plugin-dialog` `open({ directory: true })`.
+- Split charts/tables into `src/components/`; keep `App.tsx` orchestration-only.
+- `ScanSummary` shapes come from `src/types/scan.ts` — update when Rust types change.
+
+Verify with `pnpm build` before committing UI work.
