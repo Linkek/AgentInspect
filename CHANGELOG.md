@@ -1,5 +1,12 @@
 # AgentInspect Changelog
 
+## 1.0.1
+
+### Patch Changes
+
+- Windows release pipeline split for optional **SignPath Foundation** (free OSS) Authenticode signing; docs for solo maintainers.
+- PFX-based signing still supported via `WINDOWS_CERTIFICATE` secrets.
+
 ## 1.0.0
 
 ### Major Changes

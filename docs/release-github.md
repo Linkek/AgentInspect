@@ -4,6 +4,8 @@
 
 Download assets from [GitHub Releases](https://github.com/Linkek/AgentInspect/releases) for **Windows**, **macOS**, and **Linux**.
 
+**Windows SmartScreen:** see [windows-code-signing.md](windows-code-signing.md) — for solo OSS use **SignPath Foundation** (free): [signpath-setup.md](signpath-setup.md). Until SignPath credentials are on the repo, Windows assets on Releases are unsigned.
+
 ## CI requirements
 
 1. **Repository → Settings → Actions → General → Workflow permissions** must be **Read and write** (not read-only), so `GITHUB_TOKEN` can create releases and upload installers.

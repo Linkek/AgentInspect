@@ -26,7 +26,7 @@ jobs:
           draft: false
           prerelease: false
 
-  build:
+  build-unix:
     needs: create-release
     permissions:
       contents: write
@@ -39,8 +39,6 @@ jobs:
           - platform: macos-latest
             args: --target x86_64-apple-darwin
           - platform: ubuntu-22.04
-            args: ""
-          - platform: windows-latest
             args: ""
 
     runs-on: ${{ matrix.platform }}
@@ -84,3 +82,108 @@ jobs:
         with:
           releaseId: ${{ needs.create-release.outputs.release_id }}
           args: ${{ matrix.args }}
+
+  build-windows:
+    needs: create-release
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    env:
+      SIGNPATH_ORGANIZATION_ID: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+      SIGNPATH_PROJECT_SLUG: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+      SIGNPATH_SIGNING_POLICY_SLUG: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare own Windows certificate (optional)
+        shell: pwsh
+        env:
+          WINDOWS_CERTIFICATE: ${{ secrets.WINDOWS_CERTIFICATE }}
+          WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+          WINDOWS_TIMESTAMP_URL: ${{ vars.WINDOWS_TIMESTAMP_URL }}
+        run: ./.github/scripts/prepare-windows-signing.ps1
+
+      - name: Build unsigned Windows bundles
+        run: pnpm tauri build
+
+      - name: Stage Windows installers
+        id: stage
+        shell: pwsh
+        run: |
+          $out = Join-Path $env:GITHUB_WORKSPACE 'windows-artifacts'
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          $patterns = @(
+            'src-tauri/target/release/bundle/nsis/*-setup.exe',
+            'src-tauri/target/release/bundle/msi/*.msi'
+          )
+          $count = 0
+          foreach ($pattern in $patterns) {
+            Get-ChildItem -Path $pattern -ErrorAction SilentlyContinue | ForEach-Object {
+              Copy-Item $_.FullName $out
+              $count++
+            }
+          }
+          if ($count -lt 1) { throw 'No Windows installer found under src-tauri/target/release/bundle/' }
+          "directory=$out" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          Get-ChildItem $out | ForEach-Object { Write-Host "Staged: $($_.Name)" }
+
+      - name: Upload unsigned artifact (for SignPath audit)
+        if: vars.SIGNPATH_SIGNING_ENABLED == 'true'
+        id: upload-unsigned
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentinspect-windows-unsigned
+          path: windows-artifacts/*
+          if-no-files-found: error
+
+      - name: Sign with SignPath Foundation (free OSS)
+        if: vars.SIGNPATH_SIGNING_ENABLED == 'true'
+        uses: signpath/github-action-submit-signing-request@v3
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ env.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ env.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ env.SIGNPATH_SIGNING_POLICY_SLUG != '' && env.SIGNPATH_SIGNING_POLICY_SLUG || 'release-signing' }}
+          github-artifact-id: ${{ steps.upload-unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: signed-windows
+
+      - name: Resolve files to publish
+        id: publish
+        shell: pwsh
+        run: |
+          if ((Test-Path 'signed-windows') -and (Get-ChildItem 'signed-windows' -ErrorAction SilentlyContinue)) {
+            $dir = (Resolve-Path 'signed-windows').Path
+            Write-Host 'Using SignPath-signed Windows installers.'
+          } else {
+            $dir = (Resolve-Path 'windows-artifacts').Path
+            Write-Warning 'Publishing UNSIGNED Windows installers (SmartScreen will warn). Enable SignPath or add WINDOWS_CERTIFICATE — see docs/windows-code-signing.md'
+          }
+          "directory=$dir" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      - name: Upload Windows assets to GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $tag = '${{ github.ref_name }}'
+          $dir = '${{ steps.publish.outputs.directory }}'
+          Get-ChildItem $dir | ForEach-Object {
+            gh release upload $tag $_.FullName --clobber
+          }

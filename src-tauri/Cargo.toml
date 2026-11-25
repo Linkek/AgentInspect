@@ -1,6 +1,6 @@
 [package]
 name = "agentinspect"
-version = "1.0.0"
+version = "1.0.1"
 description = "Scan repos for AI agent instructions, skills, MCP, and token bloat"
 authors = ["you"]
 edition = "2024"
