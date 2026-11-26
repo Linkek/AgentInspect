@@ -6,7 +6,7 @@ Unsigned installers show **Unknown publisher**. Windows will not fully trust you
 
 ## Solo open source (recommended): SignPath Foundation — free
 
-1. **Apply** at [signpath.org/open-source](https://signpath.org/open-source) with repo **Linkek/AgentInspect** (public, OSS license).
+1. **Apply** at [signpath.org/apply.html](https://signpath.org/apply.html) (accept cookies). Copy-paste from [signpath-application-draft.md](signpath-application-draft.md). Publish [CODE_SIGNING.md](CODE_SIGNING.md) (already in repo).
 2. After approval, in the **SignPath** console:
    - Create project (note **project slug**).
    - Connect **GitHub** trusted build + install the SignPath GitHub App on this repo.

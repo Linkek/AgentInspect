@@ -4,9 +4,9 @@ One-time setup so **GitHub Release** Windows installers are signed and SmartScre
 
 ## 1. Apply for OSS signing
 
-- Go to [https://signpath.org/open-source](https://signpath.org/open-source).
-- Submit **Linkek/AgentInspect** (public repository, clear OSS license).
-- Wait for approval email (usually a few days).
+- Open [https://signpath.org/apply.html](https://signpath.org/apply.html), **accept cookies** (the form is HubSpot; without consent the page looks empty).
+- Submit using [signpath-application-draft.md](signpath-application-draft.md).
+- Wait for approval email (often several days).
 
 ## 2. SignPath project
 
