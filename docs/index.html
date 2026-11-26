@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="AgentInspect — a local desktop app that scans your repo for AI instruction bloat, token tax, and duplicates. Cursor, Copilot, Claude, RoleSync, MCP. Private by default."
+    />
+    <title>AgentInspect — See what your agents load</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235eead4'/%3E%3Cpath d='M8 20h16M8 12h10' stroke='%23061210' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <meta property="og:title" content="AgentInspect" />
+    <meta property="og:description" content="Measure AI instruction bloat before it eats your context window." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://linkek.github.io/AgentInspect/" />
+  </head>
+  <body>
+    <div class="mesh" aria-hidden="true"></div>
+
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"></span>
+          AgentInspect
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#why">Why</a>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="https://github.com/Linkek/AgentInspect">GitHub</a>
+        </nav>
+        <a class="btn btn-primary" href="https://github.com/Linkek/AgentInspect/releases/latest">Download</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <span class="eyebrow">Local · Private · Desktop</span>
+            <h1>Your repo is paying an AI&nbsp;tax. See the&nbsp;bill.</h1>
+            <p class="lead">
+              AgentInspect maps every rule, skill, MCP config, and agent instruction file — then
+              shows token cost, duplicates, and per-toolchain health scores. Trim bloat with your
+              own local model. Nothing leaves your machine unless you choose.
+            </p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="https://github.com/Linkek/AgentInspect/releases/latest">
+                Get v1.0.0
+              </a>
+              <a class="btn btn-ghost" href="https://github.com/Linkek/AgentInspect">View source</a>
+            </div>
+            <p class="privacy-chip">🔒 Scans run offline · Ollama optional · Open source MIT</p>
+          </div>
+
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar">
+              <span class="mock-dot"></span>
+              <span class="mock-dot"></span>
+              <span class="mock-dot"></span>
+            </div>
+            <div class="mock-body">
+              <div class="mock-side">
+                <div class="active">Overview</div>
+                <div>Issues</div>
+                <div>AI improve</div>
+                <div>Explorer</div>
+              </div>
+              <div class="mock-main">
+                <div class="score-ring">
+                  <span class="score-num">68</span>
+                </div>
+                <p style="text-align: center; margin: 0 0 1rem; font-size: 0.8rem; color: var(--muted)">
+                  Cursor toolchain · model budget
+                </p>
+                <div class="mock-stats">
+                  <div class="mock-stat">
+                    <span>Always-on</span>
+                    ~12.4k tok
+                  </div>
+                  <div class="mock-stat">
+                    <span>Duplicates</span>
+                    3 groups
+                  </div>
+                  <div class="mock-stat">
+                    <span>.cursor/rules</span>
+                    24 files
+                  </div>
+                  <div class="mock-stat">
+                    <span>RoleSync</span>
+                    .agents/
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why">
+        <div class="wrap">
+          <div class="section-title">
+            <h2>The problem no one graphs</h2>
+            <p>
+              Every chat loads hidden instructions: always-on rules, nested AGENTS.md files, copied
+              skills, and megabyte MCP manifests. Costs add up before you write a single prompt.
+            </p>
+          </div>
+          <div class="compare">
+            <div class="compare-col bad">
+              <h3>Without AgentInspect</h3>
+              <ul>
+                <li>Guessing which files load every turn</li>
+                <li>Same policy pasted in five toolchains</li>
+                <li>2,000-line rules nobody dares delete</li>
+                <li>Editing generated .claude mirrors by mistake</li>
+              </ul>
+            </div>
+            <div class="compare-col good">
+              <h3>With AgentInspect</h3>
+              <ul>
+                <li>Health score + ranked issues per platform</li>
+                <li>Exact &amp; near-duplicate detection</li>
+                <li>Local AI drafts a leaner diff — you approve</li>
+                <li>RoleSync canonical paths front and center</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="wrap">
+          <div class="section-title">
+            <h2>Built for agent sprawl</h2>
+            <p>One folder pick. Separate truth for Cursor, Copilot, Claude, Codex, RoleSync, and more.</p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">📊</div>
+              <h3>Per-platform health scores</h3>
+              <p>
+                Footprint, always-on tax, duplicates, MCP bloat — scored against real model budgets
+                from <code style="font-size: 0.85em">scoring-limits.json</code>.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🔍</div>
+              <h3>Deep file intelligence</h3>
+              <p>
+                Path-based classification, load scopes, token estimates, line-level warnings — tuned for
+                Cursor rules, skills, and instruction markdown.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">✨</div>
+              <h3>AI improve (local)</h3>
+              <p>
+                ChatGPT-style composer, rich diff, constraint-preserving prompts. Ollama or LM Studio on
+                localhost — backups before anything hits disk.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🌳</div>
+              <h3>RoleSync-aware</h3>
+              <p>
+                When <code style="font-size: 0.85em">.agents/</code> is canonical, edit the source —
+                not generated mirrors under <code style="font-size: 0.85em">.claude/</code> or
+                <code style="font-size: 0.85em">.codex/</code>.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🖥️</div>
+              <h3>Native desktop</h3>
+              <p>
+                Tauri 2 + React — fast, small, no browser tab. Windows, macOS (ARM + Intel), and Linux
+                installers from GitHub Releases.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🧪</div>
+              <h3>Research-backed trimming</h3>
+              <p>
+                Local model prompts follow preservation-first compression — behavioral rules stay,
+                fluff goes. Documented in the repo under <code style="font-size: 0.85em">docs/</code>.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="section-title">
+            <h2>What we scan</h2>
+          </div>
+          <div class="chips">
+            <span class="chip">.cursor/rules &amp; skills</span>
+            <span class="chip">AGENTS.md · CLAUDE.md</span>
+            <span class="chip">GitHub Copilot instructions</span>
+            <span class="chip">.claude / .codex trees</span>
+            <span class="chip">.agents/ RoleSync</span>
+            <span class="chip">mcp.json</span>
+            <span class="chip">Windsurf · Continue · OpenSpec</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="how">
+        <div class="wrap">
+          <div class="section-title">
+            <h2>Four minutes to clarity</h2>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <h3>Select repo</h3>
+              <p>Point at your project root. Respects gitignore; skips <code>node_modules</code> noise.</p>
+            </div>
+            <div class="step">
+              <h3>Read the score</h3>
+              <p>Switch toolchain tabs — Cursor and Copilot are not the same bill.</p>
+            </div>
+            <div class="step">
+              <h3>Fix issues</h3>
+              <p>Jump from ranked issues to AI improve with a real diff before save.</p>
+            </div>
+            <div class="step">
+              <h3>Ship leaner agents</h3>
+              <p>Fewer tokens, same guardrails — your team keeps the rules that matter.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="cta">
+            <h2>Stop flying blind on context cost</h2>
+            <p>Free, open source, no account. Download the latest release or hack on it tonight.</p>
+            <a class="btn btn-primary" href="https://github.com/Linkek/AgentInspect/releases/latest">Download for your OS</a>
+            <p style="margin-top: 1rem; font-size: 0.85rem">
+              Developers:
+              <a href="https://github.com/Linkek/AgentInspect#development">build from source</a>
+              ·
+              <a href="https://github.com/Linkek/AgentInspect/blob/main/docs/release-github.md">Release docs</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p>
+          <a href="https://github.com/Linkek/AgentInspect">GitHub</a>
+          ·
+          <a href="https://github.com/Linkek/AgentInspect/blob/main/LICENSE">MIT</a>
+          ·
+          Made for teams drowning in agent config
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

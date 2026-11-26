@@ -1,5 +1,7 @@
 # AgentInspect
 
+**Website:** [linkek.github.io/AgentInspect](https://linkek.github.io/AgentInspect/)
+
 Desktop app (Tauri 2 + React + MUI) that scans a repository for **AI agent configuration**: Cursor rules/skills/MCP, GitHub Copilot instructions, `AGENTS.md` / `CLAUDE.md`, Claude Code and Codex trees, **RoleSync** (`.agents/`), Windsurf, Continue, OpenSpec, and common `mcp.json` locations.
 
 It estimates **token footprint** (chars ÷ 4 heuristic), highlights **large/bloated** files, and finds **exact and near-duplicate** instruction bodies that can inflate context cost.
