@@ -37,7 +37,7 @@ Prebuilt installers for **Windows**, **macOS** (Apple Silicon + Intel), and **Li
 
 Download the latest **v** release, run the installer, and open **AgentInspect** — no Node/Rust required for end users.
 
-**Windows Smart App Control / SmartScreen:** production installers are signed in CI after [SignPath Foundation](https://signpath.org/apply.html) approval — see [Code signing policy](docs/CODE_SIGNING.md) and [apply draft text](docs/signpath-application-draft.md). Until signing is active, use `pnpm tauri:dev` or turn off Smart App Control (Settings → Windows Security).
+**Code signing (Windows):** Windows installers from this page are signed via the **[SignPath Foundation](https://signpath.org/)** free open-source program using certificates issued to SignPath Foundation, built in public CI ([signing policy](docs/CODE_SIGNING.md)). macOS and Linux packages are unsigned by SignPath.
 
 ## Releases & versioning
 
